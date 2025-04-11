@@ -1,0 +1,118 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #1e1e2f;
+  color: white;
+  padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; // changed from space-between
+  z-index: 10;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem; // 👈 Adds space between nav and newsletter
+
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+
+      &:hover,
+      &.active {
+        background-color: #33334d;
+      }
+
+      &.signout {
+        margin-top: auto;
+        color: #ff4d4d;
+      }
+    }
+  }
+
+  .newsletter {
+    background-color:  #11700E;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    color: #ecf0f1;
+    margin-bottom: 2rem;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .newsletter-input {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background-color: #fff;
+      color: #000;
+
+      &::placeholder {
+        color: #888;
+      }
+    }
+
+    .newsletter-btn {
+      background-color: #080a08;
+      color: #fff;
+      font-size: 1rem;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #000;
+      }
+    }
+
+    .status-message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+
+      &.success {
+        background-color: #11700E;
+        color: white;
+      }
+
+      &.error {
+        background-color: #e74c3c;
+        color: white;
+      }
+    }
+  }
+}

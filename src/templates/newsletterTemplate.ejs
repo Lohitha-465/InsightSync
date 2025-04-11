@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        padding: 2rem;
+      }
+      .track {
+        background: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🎵 Your Weekly Music Digest</h2>
+    <p>Here are the trending tracks this hour:</p>
+    <% tracks.forEach(track => { %>
+      <div class="track">
+        <strong><%= track.title %></strong> by <em><%= track.artist %></em>
+      </div>
+    <% }) %>
+  </body>
+</html>

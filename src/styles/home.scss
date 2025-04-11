@@ -1,0 +1,68 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin-left: 4rem;
+  margin-top: 3rem;
+
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+
+    .spotify-section {
+      margin-bottom: 3rem;
+
+      h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+      }
+
+      .track-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.5rem;
+
+        .track-card {
+          background-color: #181818;
+          padding: 1rem;
+          border-radius: 0.5rem;
+          transition: background-color 0.3s ease;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #282828;
+          }
+
+          .track-img {
+            width: 100%;
+            border-radius: 0.5rem;
+            margin-bottom: 0.8rem;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+          }
+
+          h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 0.2rem 0;
+          }
+
+          p {
+            font-size: 0.875rem;
+            color: #b3b3b3;
+          }
+        }
+      }
+    }
+  }
+
+  .player-container {
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+    background-color: #181818;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.4);
+  }
+}

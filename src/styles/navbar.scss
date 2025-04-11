@@ -1,0 +1,89 @@
+/* 🌑 DARK THEME */
+:root[data-theme="dark"] {
+    --navbar-bg: #000;
+    --navbar-color: #11700E;
+  }
+  
+  /* ☀️ LIGHT THEME */
+  :root[data-theme="light"] {
+    --navbar-bg: #fff;
+    --navbar-color: #11700E;
+  }
+  
+  /* 🌍 Navbar Styles */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 300px; // Assuming sidebar is 250px wide
+    width: calc(100% - 250px);
+    height: 60px;
+    z-index: 100;
+    background: var(--navbar-bg);
+    color: var(--navbar-color);
+  }
+  
+  /* Right side of navbar */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  /* User Info Section */
+  .user-info {
+    margin-right: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .user-icon {
+    font-size: 1.8rem;
+    margin-right: 5rem;
+  }
+  
+  .user-name {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Theme Toggle Button */
+  .theme-toggle-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: transform 0.2s ease;
+    color: inherit;
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Scrolling Text Banner */
+  .scrolling-text {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 60%;
+  }
+  
+  .scrolling-text h2 {
+    display: inline-block;
+    animation: scrollText 10s linear infinite;
+  }
+  
+  @keyframes scrollText {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
