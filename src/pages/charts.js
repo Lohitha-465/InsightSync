@@ -36,17 +36,7 @@ import Sidebar from "../components/Sidebar";
 
 import "../styles/chart.module.scss";
 
-// // ✅ Navbar Component
-// const Navbar = () => (
-//   <div className="navbar">
-//     <div className="scrolling-text">
-//       <h2>🎵 Music Dashboard 🎵 Music Dashboard 🎵 Music Dashboard</h2>
-//     </div>
-//     <button onClick={() => window.location.reload()} className="refresh-btn">
-//       🔄 Refresh
-//     </button>
-//   </div>
-// );
+
 
 export default function Charts() {
   const [genres, setGenres] = useState([]);
@@ -99,7 +89,11 @@ export default function Charts() {
                 <Legend />
                 <Bar dataKey="popularity" fill="#11700E" />
               </BarChart>
+            
+
             </ResponsiveContainer>
+            <p>This bar chart displays your most popular tracks based on Spotify’s popularity metric.</p>
+            <p>Higher values indicate greater streaming and user engagement.</p>
           </div>
 
           {/* Pie Chart for Followers */}
@@ -124,7 +118,11 @@ export default function Charts() {
                 </Pie>
                 <Tooltip />
               </PieChart>
+              
+
             </ResponsiveContainer>
+            <p>This pie chart shows the follower distribution of your top artists.</p>
+<p>The bigger the slice, the more followers that artist has.</p>
           </div>
 
           {/* Line Chart for Follower Trends */}
@@ -143,7 +141,11 @@ export default function Charts() {
                   strokeWidth={2}
                 />
               </LineChart>
+              
+
             </ResponsiveContainer>
+            <p>This line chart visualizes the follower trends across your top artists.</p>
+<p>Use this to compare popularity patterns between different artists.</p>
           </div>
 
           {/* Bar Chart for Followers */}
@@ -157,7 +159,11 @@ export default function Charts() {
                 <Legend />
                 <Bar dataKey="followers" fill="#11700E" />
               </BarChart>
+              
+
             </ResponsiveContainer>
+            <p>This bar chart highlights how many followers each of your top artists has.</p>
+<p>It provides a comparative view of artist reach and popularity.</p>
           </div>
           {/* 🎼 Favorite Genres */}
           <div className="chart-card">
@@ -174,6 +180,9 @@ export default function Charts() {
                 ],
               }}
             />
+            <p>This bar chart shows your favorite music genres by listening count.</p>
+<p>More bars indicate higher listening frequency for those genres.</p>
+
           </div>
 
           {/* 🎵 Top Artists */}
@@ -185,11 +194,15 @@ export default function Charts() {
                 datasets: [
                   {
                     data: artists.map((a) => a.followers.total),
-                    backgroundColor: ["#FF5733", "#11700E", "#DAF7A6"],
+                    backgroundColor: ["#0F5C0B", "#11700E", "#1B8A16"]
+
                   },
                 ],
               }}
             />
+            <p>This doughnut chart visualizes how your listening is spread across top artists.</p>
+<p>The size of each segment shows the relative artist prominence.</p>
+
           </div>
 
           {/* 🔥 Top Tracks */}
@@ -201,14 +214,19 @@ export default function Charts() {
                 datasets: [
                   {
                     data: tracks.map((t) => t.popularity),
-                    backgroundColor: ["#11700E", "#900C3F", "#581845"],
+                    backgroundColor: ["#0F5C0B", "#11700E", "#1B8A16"]
+
                   },
                 ],
               }}
             />
-          </div>
+            <p>This pie chart compares the popularity of your top tracks.</p>
+<p>Each slice represents a track, sized by its popularity score.</p>
 
-          {/* ⏳ Listening Hours */}
+
+          </div>
+{/* 
+          ⏳ Listening Hours
           <div className="chart-card">
             <h3>⏳ Listening Hours</h3>
             <ChartLine
@@ -223,7 +241,7 @@ export default function Charts() {
                 ],
               }}
             />
-          </div>
+          </div> */}
 
           {/* 🎧 Listening Patterns (Radar) */}
           <div className="chart-card">
@@ -235,11 +253,14 @@ export default function Charts() {
                   {
                     label: "Listening Distribution",
                     data: genres.map((g) => g.count),
-                    backgroundColor: "rgba(255, 99, 132, 0.6)",
+                    backgroundColor: "#11700E",
                   },
                 ],
               }}
             />
+            <p>This radar chart illustrates how your listening habits are distributed across genres.</p>
+<p>Spikes show genres you’ve listened to more frequently.</p>
+
           </div>
 
           {/* 🎤 Artist Popularity (Polar Area) */}
@@ -251,11 +272,15 @@ export default function Charts() {
                 datasets: [
                   {
                     data: artists.map((a) => a.followers.total),
-                    backgroundColor: ["#FF6384", "#11700E", "#FFCE56"],
+                    backgroundColor: ["#0F5C0B", "#11700E", "#1B8A16"]
+
                   },
                 ],
               }}
             />
+            <p>This polar area chart shows the popularity of your top artists.</p>
+<p>Wider segments indicate more followers and broader appeal.</p>
+
           </div>
 
           {/* 📊 Track Popularity Scatter */}
@@ -275,6 +300,9 @@ export default function Charts() {
                 ],
               }}
             />
+            <p>This scatter plot gives a random visual distribution of track popularity.</p>
+<p>X-axis is the popularity; Y-axis is randomized for spread.</p>
+
           </div>
 
           {/* 🔊 Bubble Chart - Track Features */}
@@ -295,6 +323,17 @@ export default function Charts() {
                 ],
               }}
             />
+            <p>This bubble chart visualizes track popularity on the X-axis and a randomized metric on the Y-axis, with bubble size representing another random value. It provides a quick overview of how tracks vary in popularity and distribution.
+
+
+
+
+
+
+
+4o
+
+</p>
           </div>
 
           {/* ✅ Recharts Section */}

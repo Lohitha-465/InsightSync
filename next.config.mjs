@@ -1,13 +1,12 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
 const nextConfig = {
-    images: {
-      domains: [
-        'i.scdn.co',
-        'mosaic.scdn.co',
-        'via.placeholder.com',
-      ],
-    },
-  };
-  
-  export default nextConfig;
-  
+  images: {
+    domains: [
+      'via.placeholder.com',
+      'i.scdn.co',
+      'mosaic.scdn.co' // 👈 add this line
+    ],
+  },
+};
+
+export default nextConfig;

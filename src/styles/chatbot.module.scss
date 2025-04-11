@@ -168,3 +168,21 @@
     }
   }
 }
+.chatbot-default-questions {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #000;
+
+  p {
+    margin: 0.5rem 0;
+    cursor: pointer;
+    color: #11700E;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #11700E;
+      text-decoration: underline;
+    }
+  }
+}

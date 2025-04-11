@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import '../styles/chatbot.module.scss';
+import styles from '../styles/chatbot.module.scss'; // CSS Module import
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
@@ -58,27 +58,42 @@ export default function Chatbot() {
     }
   };
 
+  const handleDefaultClick = (question) => {
+    setInput(question);
+    setTimeout(() => sendMessage(), 100);
+  };
+
   return (
-    <div className="chatbot">
-      <div className="chatbot-header">
+    <div className={styles.chatbot}>
+      <div className={styles['chatbot-header']}>
         <h2>Ask our AI anything</h2>
       </div>
 
-      <div className="chatbot-messages" ref={chatRef}>
+      {messages.length === 1 && (
+        <div className={styles['chatbot-default-questions']}>
+          <p onClick={() => handleDefaultClick("What is this?")}>1. What is this?</p>
+          <p onClick={() => handleDefaultClick("How do I export reports?")}>2. How do I export reports?</p>
+          <p onClick={() => handleDefaultClick("How many users are in my organisation?")}>3. How many users are in my organisation?</p>
+        </div>
+      )}
+
+      <div className={styles['chatbot-messages']} ref={chatRef}>
         {messages.map((msg, idx) => (
-          <div key={idx} className={`message ${msg.role}`}>
+          <div key={idx} className={`${styles.message} ${styles[msg.role]}`}>
             <div
-              className="message-content"
+              className={styles['message-content']}
               dangerouslySetInnerHTML={{
-                __html: msg.content.replace(/\n/g, '<br/>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
+                __html: msg.content
+                  .replace(/\n/g, '<br/>')
+                  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
               }}
             />
           </div>
         ))}
-        {loading && <div className="message assistant">Thinking...</div>}
+        {loading && <div className={`${styles.message} ${styles.assistant}`}>Thinking...</div>}
       </div>
 
-      <div className="chatbot-input">
+      <div className={styles['chatbot-input']}>
         <input
           type="text"
           placeholder="Ask me anything about your reports..."

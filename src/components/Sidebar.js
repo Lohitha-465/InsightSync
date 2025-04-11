@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link'; // ✅ Import Link for navigation
-
-// import "../styles/sidebar.scss";
-// import "../styles/dashboard.scss";
+import Link from 'next/link';
 
 export default function Sidebar() {
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -50,33 +48,48 @@ export default function Sidebar() {
     }
   };
 
-  return (
-    <aside className="sidebar">
-      <h2>🎵 InsightSync</h2>
-      <nav>
-        <Link href="/" className={pathname === "/" ? "active" : ""}> 🎤 Home</Link>
-        <Link href="/charts" className={pathname === "/charts" ? "active" : ""}>📊 Dashboard</Link>
-        <Link href="/reports" className={pathname === "/reports" ? "active" : ""}>📑 Reports</Link>
-        <Link href="/settings" className={pathname === "/settings" ? "active" : ""}>⚙ Newsletter</Link>
-        <Link href="/chatbot" className={pathname === "/chatbot" ? "active" : ""}>🤖 Chatbot</Link>
-        <button onClick={handleLogout} className="signout">🚪 Sign Out</button>
-      </nav>
+  const handleLinkClick = () => {
+    setSidebarOpen(false); // Close sidebar on mobile after clicking a link
+  };
 
-      <section className="newsletter">
-        <h3>📰 Subscribe to our Newsletter</h3>
-        <form onSubmit={handleSubmit}>
-          <input 
-            type="email" 
-            placeholder="Enter your email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
-            className="newsletter-input"
-          />
-          <button type="submit" className="newsletter-btn">Subscribe</button>
-        </form>
-        {statusMessage && <p className="status-message">{statusMessage.replace("'", "&#39;")}</p>}
-      </section>
-    </aside>
+  return (
+    <>
+      {/* Toggle Button (fixed outside sidebar) */}
+      <button
+        className="sidebar-toggle"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        {sidebarOpen ? '✖' : '☰'}
+      </button>
+
+      {/* Sidebar */}
+      <aside className={`sidebar ${sidebarOpen ? "active" : ""}`}>
+        <h2>🎵 InsightSync</h2>
+        <nav>
+          <Link href="/" className={pathname === "/" ? "active" : ""} onClick={handleLinkClick}> 🏠︎ Home</Link>
+          <Link href="/charts" className={pathname === "/charts" ? "active" : ""} onClick={handleLinkClick}>📊 Dashboard</Link>
+          <Link href="/reports" className={pathname === "/reports" ? "active" : ""} onClick={handleLinkClick}>📑 Reports</Link>
+          <Link href="/settings" className={pathname === "/settings" ? "active" : ""} onClick={handleLinkClick}>📰 Newsletter</Link>
+          <Link href="/chatbot" className={pathname === "/chatbot" ? "active" : ""} onClick={handleLinkClick}>🤖 Chatbot</Link>
+          <button onClick={handleLogout} className="signout">【﻿⏻】 Sign Out</button>
+        </nav>
+
+        <section className="newsletter">
+          <h3>📰 Subscribe to our Newsletter</h3>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="newsletter-input"
+            />
+            <button type="submit" className="newsletter-btn">Subscribe</button>
+          </form>
+          {statusMessage && <p className="status-message">{statusMessage.replace("'", "&#39;")}</p>}
+        </section>
+      </aside>
+    </>
   );
 }

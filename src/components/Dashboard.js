@@ -81,7 +81,7 @@ export default function Dashboard() {
         <Navbar />
         {renderGrid("Top Tracks", topTracks)}
         {renderGrid("Top Artists", topArtists, true)}
-        {renderGrid("Recently Played", recentlyPlayed)}
+       
         {renderGrid("Your Playlists", playlists)}
         {renderGrid("New Releases", newReleases)}
       </main>

@@ -1,10 +1,10 @@
 import axios from "axios";
 
 // ✅ Your Spotify API Credentials
-const client_id = "59ffa1578add43a6bd903668d558b587";
-const client_secret = "e44ed775c9f4468696f58887d5b73c6a";
+const client_id = "bde87616cf174b4b92f2d43aec755078";
+const client_secret = "2ffd4713770742988593d65edd1a699a";
 const refresh_token =
-  "AQBGVITkDSqyyrd57Nre2eUSjA-EcLcW-O9lccreFaOm6_UuGAI70xlUdFSNSjRcPlp9Xe0ZAZKL9cr-NHskIUuYpqNNjQcPU7w3rQtvfoZNCN2LkTMism6qcfVkVaYQHCo";
+  "AQDkKkNUwDBoi2xCtBBppR_3G-jRLTu2_d2W-EhVi1i0mFEM9D3t1bOKdXEHWwV0nGd7se0MHj5xHRP9wrV6m7GEOHtgkJVoVqS58F_mPnoTClIscm-gNdElYktWHR4jUwI";
 
 // ✅ Get a new access token using the refresh token
 const getAccessToken = async () => {

@@ -46,11 +46,11 @@ const Navbar = () => {
       </div>
       <div className="navbar-right">
         <button onClick={() => window.location.reload()} className="refresh-btn">
-          🔄
+          ↻
         </button>
 
         <button onClick={toggleTheme} className="theme-toggle-btn">
-          {theme === "light" ? "🌙" : "☀️"}
+          {theme === "light" ? "⏾" : "☀︎"}
         </button>
 
         <div className="user-info">
