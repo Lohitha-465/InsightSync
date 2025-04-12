@@ -9,7 +9,6 @@
   --navbar-bg: #fff;
   --navbar-color: #11700E;
 }
-
 /* 🌍 Navbar Styles */
 .navbar {
   display: flex;
@@ -30,6 +29,71 @@
     left: 0;
     width: 100%;
     padding: 10px 15px;
+    flex-direction: row; /* ✅ Keep horizontal layout */
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Right side of navbar */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 1rem;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: transform 0.2s ease;
+  color: inherit;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 0; /* ✅ Remove large margin */
+  }
+}
+
+/* 🌍 Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  height: 60px;
+  z-index: 100;
+  background: var(--navbar-bg);
+  color: var(--navbar-color);
+  transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    /* Move navbar to the left side for mobile view */
+    left: 0;
+    width: 100%;
+    padding: 10px 15px;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
@@ -44,17 +108,15 @@
   gap: 1.5rem;
   margin-right: 5rem;
 
-  /* Mobile adjustment */
   @media (max-width: 768px) {
     width: 100%;
-    justify-content: flex-end; /* Ensure they stay aligned to the right */
-    gap: 1rem; /* Adjust the gap between items */
-    flex-direction: row; /* Ensure they are arranged horizontally */
+    justify-content: space-between;
   }
 
   @media (max-width: 480px) {
-    justify-content: flex-start; /* Align items to the left */
-    gap: 1rem; /* Adjust spacing between items */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }
 
@@ -65,12 +127,11 @@
   gap: 0.5rem;
   margin-right: 5rem;
 
-  /* Ensure elements stay in line on mobile */
+  /* Fix visibility issue in mobile view */
   @media (max-width: 768px) {
     margin-right: 0; /* Remove margin for mobile */
-    justify-content: flex-start; /* Keep user info aligned to the left */
-    width: auto; /* Ensure it takes only the necessary width */
-    flex-direction: row; /* Make sure user info stays in a row */
+    justify-content: flex-start; /* Align user info to the left */
+    width: 100%; /* Ensure it takes the full width */
   }
 }
 
@@ -107,7 +168,7 @@
   }
 
   @media (max-width: 480px) {
-    margin: 0;
+    margin-top: 40rem;
   }
 }
 

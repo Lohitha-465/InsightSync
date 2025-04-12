@@ -44,21 +44,25 @@ const Navbar = () => {
       <div className="scrolling-text">
         <h2>♪ InsightSync  </h2>
       </div>
+      <button onClick={toggleTheme} className="theme-toggle-btn">
+          {theme === "light" ? "⏾" : "☀︎"}
+        </button>
       <div className="navbar-right">
         <button onClick={() => window.location.reload()} className="refresh-btn">
           ↻
         </button>
 
-        <button onClick={toggleTheme} className="theme-toggle-btn">
-          {theme === "light" ? "⏾" : "☀︎"}
-        </button>
+       
 
         <div className="user-info">
           <FaUserCircle className="user-icon" />
           <span className="user-name">{username}</span>
         </div>
       </div>
+
     </div>
+
+    
   );
 };
 
