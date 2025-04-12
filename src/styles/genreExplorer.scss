@@ -24,7 +24,8 @@
   h4 {
     margin-top: 1.5rem;
     font-size: 1.2rem;
-    color: #fff;text-align: left;
+    text-align: left;
+    color: #fff;
   }
 
   .selectors {
@@ -170,7 +171,21 @@
     margin: 0 auto;
   }
 
+  // 🔻 Mobile Responsiveness Only 🔻
   @media (max-width: 768px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-left: 0;
+      text-align: center;
+    }
+
+    h3, h4 {
+      text-align: center;
+    }
+
     .selectors {
       flex-direction: column;
 
@@ -189,12 +204,14 @@
       }
     }
 
-    .charts-row {
+    .charts-row,
+    .tables-row {
       flex-direction: column;
     }
 
-    .tables-row {
+    .chart-container {
       flex-direction: column;
+      align-items: center;
     }
   }
 }

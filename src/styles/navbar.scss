@@ -1,90 +1,143 @@
 /* 🌑 DARK THEME */
 :root[data-theme="dark"] {
-    --navbar-bg: #000;
-    --navbar-color: #11700E;
-  }
-  
-  /* ☀️ LIGHT THEME */
-  :root[data-theme="light"] {
-    --navbar-bg: #fff;
-    --navbar-color: #11700E;
-  }
-  
-  /* 🌍 Navbar Styles */
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    position: fixed;
-    top: 0;
-    left: 300px; // Assuming sidebar is 250px wide
-    width: calc(100% - 250px);
-    height: 60px;
-    z-index: 100;
-    background: var(--navbar-bg);
-    color: var(--navbar-color);
-  }
-  
-  /* Right side of navbar */
-  .navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  
-  /* User Info Section */
-  .user-info {
-    margin-right: 5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .user-icon {
-    font-size: 1.8rem;
-    margin-right: 5rem;
-  }
-  
-  .user-name {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  /* Theme Toggle Button */
-  .theme-toggle-btn {
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    margin: 0 10px;
-    transition: transform 0.2s ease;
-    color: inherit;
-  
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-  
-  /* Scrolling Text Banner */
-  .scrolling-text {
-    overflow: hidden;
-    white-space: nowrap;
+  --navbar-bg: #000;
+  --navbar-color: #11700E;
+}
+
+/* ☀️ LIGHT THEME */
+:root[data-theme="light"] {
+  --navbar-bg: #fff;
+  --navbar-color: #11700E;
+}
+
+/* 🌍 Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  height: 60px;
+  z-index: 100;
+  background: var(--navbar-bg);
+  color: var(--navbar-color);
+  transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    left: 0;
     width: 100%;
+    padding: 10px 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-left: 0;
   }
-  
-  .scrolling-text h2 {
-    display: inline-block;
-    padding-left: 100%;
-    animation: scrollText 20s linear infinite;
+}
+
+/* Right side of navbar */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-right: 5rem;
+
+  /* Mobile adjustment */
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: flex-end; /* Ensure they stay aligned to the right */
+    gap: 1rem; /* Adjust the gap between items */
+    flex-direction: row; /* Ensure they are arranged horizontally */
   }
-  
-  @keyframes scrollText {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-100%);
-    }
+
+  @media (max-width: 480px) {
+    justify-content: flex-start; /* Align items to the left */
+    gap: 1rem; /* Adjust spacing between items */
   }
-  
+}
+
+/* User Info Section */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 5rem;
+
+  /* Ensure elements stay in line on mobile */
+  @media (max-width: 768px) {
+    margin-right: 0; /* Remove margin for mobile */
+    justify-content: flex-start; /* Keep user info aligned to the left */
+    width: auto; /* Ensure it takes only the necessary width */
+    flex-direction: row; /* Make sure user info stays in a row */
+  }
+}
+
+.user-icon {
+  font-size: 1.8rem;
+  margin-right: 5rem;
+
+  @media (max-width: 768px) {
+    margin-right: 1rem;
+  }
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: bold;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: transform 0.2s ease;
+  color: inherit;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 480px) {
+    margin: 0;
+  }
+}
+
+/* Scrolling Text Banner */
+.scrolling-text {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.scrolling-text h2 {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrollText 20s linear infinite;
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
