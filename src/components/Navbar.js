@@ -42,7 +42,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="scrolling-text">
-        <h2>🎵 InsightSync 🎵 </h2>
+        <h2>♪ InsightSync  </h2>
       </div>
       <div className="navbar-right">
         <button onClick={() => window.location.reload()} className="refresh-btn">

@@ -66,7 +66,7 @@ export default function Chatbot() {
   return (
     <div className={styles.chatbot}>
       <div className={styles['chatbot-header']}>
-        <h2>Ask our AI anything</h2>
+        <h2>Ask our InsightSync AI anything</h2>
       </div>
 
       {messages.length === 1 && (

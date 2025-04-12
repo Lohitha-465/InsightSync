@@ -64,14 +64,14 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? "active" : ""}`}>
-        <h2>🎵 InsightSync</h2>
+        <h2>♪ InsightSync</h2>
         <nav>
           <Link href="/" className={pathname === "/" ? "active" : ""} onClick={handleLinkClick}> 🏠︎ Home</Link>
           <Link href="/charts" className={pathname === "/charts" ? "active" : ""} onClick={handleLinkClick}>📊 Dashboard</Link>
           <Link href="/reports" className={pathname === "/reports" ? "active" : ""} onClick={handleLinkClick}>📑 Reports</Link>
           <Link href="/settings" className={pathname === "/settings" ? "active" : ""} onClick={handleLinkClick}>📰 Newsletter</Link>
           <Link href="/chatbot" className={pathname === "/chatbot" ? "active" : ""} onClick={handleLinkClick}>🤖 Chatbot</Link>
-          <button onClick={handleLogout} className="signout">【﻿⏻】 Sign Out</button>
+          <button onClick={handleLogout} className="signout">﻿⏻ Sign Out</button>
         </nav>
 
         <section className="newsletter">

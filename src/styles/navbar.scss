@@ -70,17 +70,18 @@
   .scrolling-text {
     overflow: hidden;
     white-space: nowrap;
-    width: 60%;
+    width: 100%;
   }
   
   .scrolling-text h2 {
     display: inline-block;
-    animation: scrollText 10s linear infinite;
+    padding-left: 100%;
+    animation: scrollText 20s linear infinite;
   }
   
   @keyframes scrollText {
     from {
-      transform: translateX(100%);
+      transform: translateX(0%);
     }
     to {
       transform: translateX(-100%);

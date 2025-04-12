@@ -10,7 +10,7 @@ export default function ChatbotPage() {
       <Sidebar />
       <main className="main-content">
         <Navbar />
-        <h2 style={{ textAlign: "center", margin: "1rem 0" }}>🎤 Music Chatbot Assistant</h2>
+        <h2 style={{ textAlign: "center", margin: "1rem 0" }}></h2>
         <Chatbot />
       </main>
     </div>

@@ -3,13 +3,13 @@
   background-color: #000;
   font-family: 'Segoe UI', sans-serif;
   color: #fff;
-  margin-left: 150px;
-  margin-right: 5rem;
+  margin-left: 100px;
+  margin-right: 10rem;
 
   h2 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: left;
     color: #11700E;
     margin-left: 3rem;
   }
@@ -17,13 +17,14 @@
   h3 {
     margin-top: 2rem;
     font-size: 1.5rem;
+    text-align: left;
     color: #fff;
   }
 
   h4 {
     margin-top: 1.5rem;
     font-size: 1.2rem;
-    color: #fff;
+    color: #fff;text-align: left;
   }
 
   .selectors {
@@ -85,7 +86,7 @@
       flex: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: left;
       background-color: #1f1f1f;
       border-radius: 12px;
       padding: 1rem;

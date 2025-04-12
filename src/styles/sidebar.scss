@@ -1,139 +1,3 @@
-// .sidebar {
-//   width: 220px;
-//   height: 100vh;
-//   background-color: #1e1e2f;
-//   color: white;
-//   padding: 2rem 1rem;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start; // changed from space-between
-//   z-index: 10;
-
-//   h2 {
-//     margin-bottom: 2rem;
-//     font-size: large;
-//   }
-
-//   nav {
-//     margin-top: -1rem;
-//     display: flex;
-//     flex-direction: column;
-//     margin-bottom: 1.5rem;
-//     font-size: 0.8rem;
-//     gap: 0rem;
-  
-//     a {
-//       font-size: 0.8rem;
-//       color: white;
-//       text-decoration: none;
-//       padding: 0.5rem 1rem;
-//       margin-bottom: 0.5rem;
-//       border-radius: 8px;
-//       transition: background 0.2s ease;
-  
-//       &:hover,
-//       &.active {
-//         background-color: #000;
-//       }
-//     }
-  
-//     .signout {
-//       margin-top: auto;
-//       padding: 0.75rem 1rem;
-//       border-radius: 8px;
-//       background-color: transparent;
-//       color: #fff;
-//       font-weight: bold;
-//       border: none;
-//       cursor: pointer;
-//       transition: background-color 0.2s ease;
-  
-//       &:hover {
-//         background-color: #000;
-//       }
-//     }
-//   }
-  
-//   .newsletter {
-//     background-color:  #11700E;
-//     padding: 1.5rem;
-//     border-radius: 12px;
-//     text-align: center;
-//     color: #ecf0f1;
-//     margin-bottom: 5rem;
-//     margin-top: auto;
-
-//     h3 {
-//       font-size: 1rem;
-//       margin-bottom: 1.5rem;
-//       color: #fff;
-//     }
-
-//     form {
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       gap: 1rem;
-//     }
-
-//     .newsletter-input {
-//       width: 100%;
-//       max-width: 400px;
-//       padding: 0.75rem 1rem;
-//       font-size: 0.8rem;
-//       border-radius: 8px;
-//       border: none;
-//       outline: none;
-//       background-color: #fff;
-//       color: #000;
-
-//       &::placeholder {
-//         color: #888;
-//       }
-//     }
-
-//     .newsletter-btn {
-//       background-color: #080a08;
-//       color: #fff;
-//       font-size: 1rem;
-//       padding: 0.75rem 2rem;
-//       border: none;
-//       border-radius: 8px;
-//       cursor: pointer;
-//       transition: background-color 0.3s ease;
-
-//       &:hover {
-//         background-color: #000;
-//       }
-//     }
-
-//     .status-message {
-//       margin-top: 1rem;
-//       padding: 0.75rem;
-//       font-size: 0.95rem;
-//       border-radius: 8px;
-//       background-color: #ecf0f1;
-//       color: #11700E;
-//       max-width: 400px;
-//       margin-left: auto;
-//       margin-right: auto;
-
-//       &.success {
-//         background-color: #11700E;
-//         color: white;
-//       }
-
-//       &.error {
-//         background-color: #e74c3c;
-//         color: white;
-//       }
-//     }
-//   }
-// }
-
 .sidebar-toggle {
   position: fixed;
   top: 1rem;
@@ -142,7 +6,7 @@
   background: none;
   border: none;
   color: white;
-  z-index: 1100; 
+  z-index: 1100;
   cursor: pointer;
 
   @media (min-width: 769px) {
@@ -157,7 +21,7 @@
   color: white;
   padding: 2rem 1rem;
   position: fixed;
-  top: 0;
+  top: -2rem;
   left: 0;
   display: flex;
   flex-direction: column;
@@ -165,7 +29,6 @@
   z-index: 1000;
   transition: transform 0.3s ease;
 
-  // Hide on smaller screens initially
   @media (max-width: 768px) {
     transform: translateX(-100%);
   }
@@ -192,6 +55,7 @@
       color: white;
       text-decoration: none;
       padding: 0.5rem 1rem;
+      font-weight: bold;
       margin-bottom: 0.5rem;
       border-radius: 8px;
       transition: background 0.2s ease;
@@ -203,8 +67,11 @@
     }
 
     .signout {
-      margin-top: auto;
-      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
       background-color: transparent;
       color: #fff;
@@ -220,15 +87,15 @@
   }
 
   .newsletter {
-    background-color: #11700E;
+    background-color: #11700e;
     padding: 1.5rem;
     border-radius: 12px;
     text-align: center;
     color: #ecf0f1;
     margin-bottom: 5rem;
     margin-top: auto;
-    border-color: #000;
-    border-style: groove;
+    border: 1px groove #000;
+
     h3 {
       font-size: 1rem;
       margin-bottom: 1.5rem;
@@ -279,13 +146,13 @@
       font-size: 0.95rem;
       border-radius: 8px;
       background-color: #ecf0f1;
-      color: #11700E;
+      color: #11700e;
       max-width: 300px;
       margin-left: auto;
       margin-right: auto;
 
       &.success {
-        background-color: #11700E;
+        background-color: #11700e;
         color: white;
       }
 
@@ -296,6 +163,8 @@
     }
   }
 }
+
+// Optional: if you're using the toggle again elsewhere
 .sidebar-toggle {
   position: fixed;
   top: 1rem;

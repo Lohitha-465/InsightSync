@@ -160,7 +160,9 @@ body {
 
 .scrolling-text h2 {
   display: inline-block;
-  animation: scrollText 12s linear infinite;
+  padding-left: 100%;
+  animation: scrollText 25s linear infinite;
+  color: #11700E;
 }
 
 @keyframes scrollText {
