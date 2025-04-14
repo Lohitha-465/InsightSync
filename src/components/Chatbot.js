@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import styles from '../styles/chatbot.module.scss'; // CSS Module import
+import styles from '../styles/chatbot.module.scss';
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
@@ -12,12 +12,43 @@ export default function Chatbot() {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
 
   const chatRef = useRef(null);
+  const recognitionRef = useRef(null);
+  const currentUtteranceRef = useRef(null);
+  const currentSpeakingTextRef = useRef('');
 
   useEffect(() => {
     chatRef.current?.scrollTo(0, chatRef.current.scrollHeight);
   }, [messages, loading]);
+
+  useEffect(() => {
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setInput(transcript);
+        setIsListening(false);
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        setIsListening(false);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognitionRef.current = recognition;
+    }
+  }, []);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -63,6 +94,51 @@ export default function Chatbot() {
     setTimeout(() => sendMessage(), 100);
   };
 
+  const handleMicClick = () => {
+    if (recognitionRef.current) {
+      if (!isListening) {
+        try {
+          recognitionRef.current.start();
+          setIsListening(true);
+        } catch (error) {
+          console.error('Speech recognition start error:', error);
+        }
+      } else {
+        recognitionRef.current.stop();
+        setIsListening(false);
+      }
+    }
+  };
+
+  const speak = (text) => {
+    const synth = window.speechSynthesis;
+
+    // Stop if it's the same message being played again
+    if (synth.speaking && currentSpeakingTextRef.current === text) {
+      synth.cancel();
+      currentSpeakingTextRef.current = '';
+      currentUtteranceRef.current = null;
+      return;
+    }
+
+    // Stop previous speech
+    if (synth.speaking) {
+      synth.cancel();
+    }
+
+    // Start speaking new message
+    const utterance = new SpeechSynthesisUtterance(text);
+    currentUtteranceRef.current = utterance;
+    currentSpeakingTextRef.current = text;
+
+    utterance.onend = () => {
+      currentSpeakingTextRef.current = '';
+      currentUtteranceRef.current = null;
+    };
+
+    synth.speak(utterance);
+  };
+
   return (
     <div className={styles.chatbot}>
       <div className={styles['chatbot-header']}>
@@ -71,23 +147,33 @@ export default function Chatbot() {
 
       {messages.length === 1 && (
         <div className={styles['chatbot-default-questions']}>
-          <p onClick={() => handleDefaultClick("What is this?")}>1. What is this?</p>
-          <p onClick={() => handleDefaultClick("How do I export reports?")}>2. How do I export reports?</p>
-          <p onClick={() => handleDefaultClick("How many users are in my organisation?")}>3. How many users are in my organisation?</p>
+          <p onClick={() => handleDefaultClick('What is this?')}>1. What is this?</p>
+          <p onClick={() => handleDefaultClick('How do I export reports?')}>2. How do I export reports?</p>
+          <p onClick={() => handleDefaultClick('How many users are in my organisation?')}>3. How many users are in my organisation?</p>
         </div>
       )}
 
       <div className={styles['chatbot-messages']} ref={chatRef}>
         {messages.map((msg, idx) => (
           <div key={idx} className={`${styles.message} ${styles[msg.role]}`}>
-            <div
-              className={styles['message-content']}
-              dangerouslySetInnerHTML={{
-                __html: msg.content
-                  .replace(/\n/g, '<br/>')
-                  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
-              }}
-            />
+            <div className={styles['message-content-wrapper']}>
+              <div
+                className={styles['message-content']}
+                dangerouslySetInnerHTML={{
+                  __html: msg.content
+                    .replace(/\n/g, '<br/>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
+                }}
+              />
+              {msg.role === 'assistant' && (
+                <button
+                  className={styles.speakButton}
+                  onClick={() => speak(msg.content.replace(/\*\*(.*?)\*\*/g, '$1'))}
+                >
+                  🔊
+                </button>
+              )}
+            </div>
           </div>
         ))}
         {loading && <div className={`${styles.message} ${styles.assistant}`}>Thinking...</div>}
@@ -101,6 +187,7 @@ export default function Chatbot() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
         />
+        <button onClick={handleMicClick}>{isListening ? '🎙️' : '🎤'}</button>
         <button onClick={sendMessage}>➤</button>
       </div>
     </div>
