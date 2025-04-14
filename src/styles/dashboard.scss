@@ -1,18 +1,18 @@
 /* 🌑 DARK THEME */
 :root[data-theme="dark"] {
   --bg-body: #000;
-  --text-color: #fff;
+  --text-color: #000;
   --sidebar-bg: linear-gradient(135deg, #11700E, #191414);
   --navbar-bg: #0d0d0d;
-  --navbar-color: #1db954;
-  --refresh-bg: #121212;
-  --refresh-hover: #1db954;
+  --navbar-color: #11700E;
+  --refresh-bg: #11700E;
+  --refresh-hover: #11700E;
   --chart-bg: #121212;
   --search-bg: #2a2a2a;
   --search-text: #fff;
   --track-bg: #1e1e1e;
   --track-hover: #292929;
-  --track-active-border: #1db954;
+  --track-active-border: #11700E;
   --artist-color: #b3b3b3;
   --music-player-bg: rgba(0, 0, 0, 0.7);
   --signout-color: #ff4d4f;
@@ -379,7 +379,7 @@ body {
 /* Chart Card */
 .chart-card {
   background: var(--chart-bg);
-  color: var(--text-color);
+  color: #11700E;
   padding: 20px;
   border-radius: 14px;
   box-shadow: var(--shadow);
