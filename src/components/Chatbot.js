@@ -187,7 +187,7 @@ export default function Chatbot() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <button onClick={handleMicClick}>{isListening ? '🎙️' : '🎤'}</button>
+        <button onClick={handleMicClick}>{isListening ? '🎤' : '🎙️'}</button>
         <button onClick={sendMessage}>➤</button>
       </div>
     </div>

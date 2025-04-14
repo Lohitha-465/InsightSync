@@ -205,3 +205,82 @@
     color: #0b5ed7;
   }
 }
+.speakButton {
+  transition: transform 0.2s ease, color 0.2s ease;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+
+  &:hover {
+    transform: scale(1.2);
+    color: #1a73e8;
+  }
+
+  &.speaking {
+    animation: pulse 1s infinite;
+    color: #ff4081; // Speaking state color
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+// Responsive styling
+@media (max-width: 768px) {
+  .speakButton {
+    font-size: 1.1rem;
+    margin-left: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .speakButton {
+    font-size: 1rem;
+    margin-left: 0.3rem;
+  }
+}
+.micButton {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
+    color: #1a73e8;
+  }
+
+  &.listening {
+    color: #ff4081; // Active listening color
+    animation: pulse 1s infinite;
+  }
+}
+
+// Pulse animation
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .micButton {
+    font-size: 18px;
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .micButton {
+    font-size: 16px;
+    margin-left: 6px;
+  }
+}
